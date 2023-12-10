@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pygame</span>
+
+
+<span class="s0">class </span><span class="s1">Board:</span>
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">width</span><span class="s0">, </span><span class="s1">height):</span>
+        <span class="s1">self.width = width</span>
+        <span class="s1">self.height = height</span>
+        <span class="s1">self.board = [[</span><span class="s2">0</span><span class="s1">] * width </span><span class="s0">for </span><span class="s1">_ </span><span class="s0">in </span><span class="s1">range(height)]</span>
+        <span class="s1">self.left = </span><span class="s2">10</span>
+        <span class="s1">self.top = </span><span class="s2">10</span>
+        <span class="s1">self.cell_size = </span><span class="s2">30</span>
+
+    <span class="s0">def </span><span class="s1">set_view(self</span><span class="s0">, </span><span class="s1">left</span><span class="s0">, </span><span class="s1">top</span><span class="s0">, </span><span class="s1">cell_size):</span>
+        <span class="s1">self.left = left</span>
+        <span class="s1">self.top = top</span>
+        <span class="s1">self.cell_size = cell_size</span>
+
+    <span class="s0">def </span><span class="s1">render(self</span><span class="s0">, </span><span class="s1">screen):</span>
+        <span class="s0">for </span><span class="s1">y </span><span class="s0">in </span><span class="s1">range(self.height):</span>
+            <span class="s0">for </span><span class="s1">x </span><span class="s0">in </span><span class="s1">range(self.width):</span>
+                <span class="s1">pygame.draw.rect(screen</span><span class="s0">, </span><span class="s1">pygame.Color(</span><span class="s2">255</span><span class="s0">, </span><span class="s2">255</span><span class="s0">, </span><span class="s2">255</span><span class="s1">)</span><span class="s0">, </span><span class="s1">(</span>
+                    <span class="s1">x * self.cell_size + self.left</span><span class="s0">, </span><span class="s1">y * self.cell_size + self.top</span><span class="s0">, </span><span class="s1">self.cell_size</span><span class="s0">,</span>
+                    <span class="s1">self.cell_size)</span><span class="s0">, </span><span class="s2">1</span><span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">main():</span>
+    <span class="s1">pygame.init()</span>
+    <span class="s1">size = </span><span class="s2">600</span><span class="s0">, </span><span class="s2">600</span>
+    <span class="s1">screen = pygame.display.set_mode(size)</span>
+    <span class="s1">pygame.display.set_caption(</span><span class="s3">'Инициализация игры'</span><span class="s1">)</span>
+    <span class="s1">board = Board(</span><span class="s2">5</span><span class="s0">, </span><span class="s2">7</span><span class="s1">)</span>
+    <span class="s1">board.set_view(</span><span class="s2">50</span><span class="s0">, </span><span class="s2">50</span><span class="s0">, </span><span class="s2">55</span><span class="s1">)</span>
+    <span class="s1">running = </span><span class="s0">True</span>
+    <span class="s0">while </span><span class="s1">running:</span>
+        <span class="s0">for </span><span class="s1">event </span><span class="s0">in </span><span class="s1">pygame.event.get():</span>
+            <span class="s0">if </span><span class="s1">event.type == pygame.QUIT:</span>
+                <span class="s1">running = </span><span class="s0">False</span>
+        <span class="s1">screen.fill((</span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">))</span>
+        <span class="s1">board.render(screen)</span>
+        <span class="s1">pygame.display.flip()</span>
+    <span class="s1">pygame.quit()</span>
+
+
+<span class="s0">if </span><span class="s1">__name__ == </span><span class="s3">'__main__'</span><span class="s1">:</span>
+    <span class="s1">main()</span></pre>
+</body>
+</html>
